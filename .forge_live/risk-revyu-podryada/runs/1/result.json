@@ -1,0 +1,14 @@
+{
+  "passed": 1,
+  "total": 1,
+  "results": [
+    {
+      "id": "T-001",
+      "name": "podryad-high",
+      "status": "pass",
+      "detail": "прогон=ok",
+      "diffs": [],
+      "run_status": "ok"
+    }
+  ]
+}

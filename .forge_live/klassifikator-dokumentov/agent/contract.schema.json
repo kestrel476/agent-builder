@@ -1,0 +1,29 @@
+{
+  "type": "object",
+  "properties": {
+    "label": {
+      "type": "string",
+      "description": "Выбранная категория.",
+      "enum": [
+        "договор",
+        "доверенность",
+        "претензия",
+        "акт выполненных работ",
+        "иное"
+      ]
+    },
+    "rationale": {
+      "type": "string",
+      "description": "Почему именно эта метка."
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Самооценка уверенности от 0 до 1."
+    }
+  },
+  "required": [
+    "label",
+    "confidence"
+  ],
+  "additionalProperties": false
+}

@@ -1,0 +1,16 @@
+name: Риск-ревью подряда
+archetype: risk_check
+strategy: extract
+input_arity: 1
+confidence_threshold: 0.6
+capabilities:
+- llm
+- doc_extraction
+- ocr
+- rules
+- json_output
+- confidence
+- logging
+- multi_step
+settings:
+  output_kind: json

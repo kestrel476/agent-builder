@@ -1,0 +1,21 @@
+{
+  "name": "Проверка рисков аренды",
+  "slug": "proverka-riskov-arendy",
+  "archetype": "risk_check",
+  "version": 1,
+  "strategy": "extract",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "rules",
+    "json_output",
+    "confidence",
+    "logging",
+    "multi_step"
+  ],
+  "schema_hash": "dffb8f3d32912fe3",
+  "open_issues": 0,
+  "assumptions": 6,
+  "test_cases": 1
+}

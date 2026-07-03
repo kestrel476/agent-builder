@@ -1,0 +1,403 @@
+{
+  "name": "Ревью пакета сделки",
+  "slug": "revyu-paketa-sdelki",
+  "archetype": "document_package",
+  "version": 1,
+  "stage": "built",
+  "goal": "Проверка комплекта документов и рисков по кредитной сделке",
+  "domain_notes": "",
+  "glossary": {},
+  "instructions_raw": "Проверять комплектность и риски пакета документов по кредитной сделке",
+  "instructions": {
+    "goal": "Проверка комплекта документов и рисков по кредитной сделке",
+    "scope_in": [
+      "Комплект документов",
+      "Кредитная сделка"
+    ],
+    "scope_out": [
+      "Заключение о полноте комплекта документов",
+      "Оценка рисков сделки"
+    ],
+    "inputs": [],
+    "outputs": [],
+    "business_rules": [],
+    "constraints": [],
+    "definitions": [],
+    "ambiguities": [],
+    "missing_data": [],
+    "interpretation_risks": []
+  },
+  "io": {
+    "inputs": [
+      {
+        "name": "document_a",
+        "kind": "document",
+        "required": true,
+        "formats": [
+          "pdf",
+          "docx"
+        ],
+        "description": "Базовый документ."
+      },
+      {
+        "name": "document_b",
+        "kind": "document",
+        "required": true,
+        "formats": [
+          "pdf",
+          "docx"
+        ],
+        "description": "Проверяемый документ."
+      }
+    ],
+    "output_kind": "report",
+    "fields": [
+      {
+        "name": "verdict",
+        "type": "string",
+        "required": true,
+        "description": "Итоговый вердикт по пакету.",
+        "enum": [
+          "success",
+          "partial",
+          "rejected"
+        ],
+        "item_fields": [],
+        "example": null
+      },
+      {
+        "name": "documents",
+        "type": "array",
+        "required": true,
+        "description": "Разбор каждого документа пакета.",
+        "enum": [],
+        "item_fields": [
+          {
+            "name": "name",
+            "type": "string",
+            "required": true,
+            "description": "Имя файла.",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          },
+          {
+            "name": "doc_type",
+            "type": "string",
+            "required": true,
+            "description": "Определённый тип.",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          },
+          {
+            "name": "summary",
+            "type": "string",
+            "required": false,
+            "description": "Краткое содержание.",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          },
+          {
+            "name": "findings",
+            "type": "array",
+            "required": false,
+            "description": "Находки/риски.",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          }
+        ],
+        "example": null
+      },
+      {
+        "name": "flows",
+        "type": "array",
+        "required": false,
+        "description": "Плоский список находок с привязкой к документу.",
+        "enum": [],
+        "item_fields": [
+          {
+            "name": "document",
+            "type": "string",
+            "required": true,
+            "description": "",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          },
+          {
+            "name": "doc_type",
+            "type": "string",
+            "required": false,
+            "description": "",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          },
+          {
+            "name": "finding",
+            "type": "string",
+            "required": true,
+            "description": "",
+            "enum": [],
+            "item_fields": [],
+            "example": null
+          }
+        ],
+        "example": null
+      },
+      {
+        "name": "missing_required",
+        "type": "array",
+        "required": false,
+        "description": "Обязательные типы документов, которых нет в пакете.",
+        "enum": [],
+        "item_fields": [],
+        "example": null
+      },
+      {
+        "name": "unrouted",
+        "type": "array",
+        "required": false,
+        "description": "Документы нераспознанного типа.",
+        "enum": [],
+        "item_fields": [],
+        "example": null
+      },
+      {
+        "name": "case_summary",
+        "type": "string",
+        "required": false,
+        "description": "Сводное заключение по кейсу.",
+        "enum": [],
+        "item_fields": [],
+        "example": null
+      }
+    ],
+    "success_criteria": [
+      "Все обязательные поля присутствуют и непусты: verdict, documents.",
+      "Значения полей прослеживаются до исходного документа (без выдумок)."
+    ],
+    "error_definition": "ERROR: вход нечитаем или ни одно обязательное поле невозможно определить. PARTIAL: часть обязательных полей отсутствует (выводятся как null). LOW_CONFIDENCE: результат ниже порога уверенности.",
+    "partial_result_policy": "Выводи каждое поле, которое можно определить; неопределимые поля задавай как null; никогда не отбрасывай оболочку результата. Отмечай частичные результаты в `status`.",
+    "confidence_required": false
+  },
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "routing",
+    "multi_step",
+    "json_output",
+    "schema_validation",
+    "logging"
+  ],
+  "knowledge": null,
+  "rule_catalog": null,
+  "package": {
+    "taxonomy": [
+      {
+        "code": "ustav",
+        "title": "Устав",
+        "description": "учредительный документ общества: уставный капитал, органы управления"
+      },
+      {
+        "code": "prko",
+        "title": "Проект решения о кредитной операции",
+        "description": "кредитное решение: заёмщик, обеспечение, условия кредита"
+      },
+      {
+        "code": "doverennost",
+        "title": "Доверенность",
+        "description": "документ о полномочиях представителя"
+      }
+    ],
+    "required": [
+      "ustav",
+      "prko",
+      "doverennost"
+    ],
+    "per_type": {}
+  },
+  "issues": [
+    {
+      "id": "ISS-001",
+      "kind": "missing",
+      "severity": "blocker",
+      "message": "Не определён ни один вход.",
+      "where": "io.inputs",
+      "rationale": "Входная поверхность агента не указана.",
+      "suggestion": "Укажите, что получает агент (текст, JSON, файл документа).",
+      "source": "contract",
+      "status": "resolved"
+    },
+    {
+      "id": "ISS-001",
+      "kind": "missing",
+      "severity": "major",
+      "message": "Нет определения того, что считается ошибкой.",
+      "where": "io.error_definition",
+      "rationale": "Ошибка, частичный результат и успех должны быть различимы.",
+      "suggestion": "Определите исходы ошибки, частичного результата и низкой уверенности.",
+      "source": "contract",
+      "status": "resolved"
+    },
+    {
+      "id": "ISS-003",
+      "kind": "vague_success",
+      "severity": "blocker",
+      "message": "Критерии успеха не определены.",
+      "where": "io.success_criteria",
+      "rationale": "Без измеримых критериев успеха агента нельзя проверить.",
+      "suggestion": "Укажите для каждого поля или в целом, что делает вывод правильным.",
+      "source": "success",
+      "status": "resolved"
+    }
+  ],
+  "questions": [
+    {
+      "id": "Q-ARCH-document_package-01",
+      "text": "Какова таксономия типов документов (код + описание каждого) для классификации?",
+      "why": "По типу маршрутизируется анализ; без таксономии нельзя классифицировать.",
+      "category": "io",
+      "options": [],
+      "blocking": true,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-ARCH-document_package-02",
+      "text": "Какие типы документов ОБЯЗАТЕЛЬНЫ в пакете (для проверки комплектности)?",
+      "why": "Определяет вердикт rejected при неполном пакете.",
+      "category": "rules",
+      "options": [],
+      "blocking": true,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-ARCH-document_package-03",
+      "text": "Что именно извлекать/проверять по каждому типу документа?",
+      "why": "Задаёт пер-документный анализ.",
+      "category": "rules",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-004",
+      "text": "Не определён ни один вход. (предложение: Укажите, что получает агент (текст, JSON, файл документа).)",
+      "why": "Входная поверхность агента не указана.",
+      "category": "missing",
+      "options": [],
+      "blocking": true,
+      "issue_id": "ISS-001",
+      "answer": "[авто] разрешено при фиксации контракта"
+    },
+    {
+      "id": "Q-005",
+      "text": "Критерии успеха не определены. (предложение: Укажите для каждого поля или в целом, что делает вывод правильным.)",
+      "why": "Без измеримых критериев успеха агента нельзя проверить.",
+      "category": "vague_success",
+      "options": [],
+      "blocking": true,
+      "issue_id": "ISS-003",
+      "answer": "[авто] разрешено при фиксации контракта"
+    },
+    {
+      "id": "Q-006",
+      "text": "Какое значение должно быть у поля 'verdict' в случае успешного прохождения проверки комплекта документов?",
+      "why": "Необходимо понять, какое значение будет сигнализировать о положительном результате проверки.",
+      "category": "general",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-007",
+      "text": "Какие типы документов могут быть включены в поле 'documents' и как они должны быть структурированы?",
+      "why": "Нужно уточнить, какие именно документы могут быть частью комплекта и как они должны быть представлены в выходных данных.",
+      "category": "general",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-008",
+      "text": "Что означает поле 'flows' и какие значения оно может принимать?",
+      "why": "Необходимо понять, что именно представляет собой поле 'flows' и какие значения оно может содержать.",
+      "category": "general",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-009",
+      "text": "Какие документы считаются обязательными и как они должны быть отмечены в поле 'missing_required'?",
+      "why": "Нужно уточнить, какие документы являются обязательными и как они должны быть представлены в случае их отсутствия.",
+      "category": "general",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    },
+    {
+      "id": "Q-010",
+      "text": "Что означает поле 'unrouted' и какие значения оно может принимать?",
+      "why": "Необходимо понять, что именно представляет собой поле 'unrouted' и какие значения оно может содержать.",
+      "category": "general",
+      "options": [],
+      "blocking": false,
+      "issue_id": null,
+      "answer": null
+    }
+  ],
+  "assumptions": [],
+  "test_cases": [],
+  "system_prompt": "Цель:\nПроверить комплектность и риски кредитного дела на основе предоставленного набора документов.\n\nВыходной контракт:\n- `verdict`: Итоговое решение о кредитном деле (обязательно).\n- `documents`: Список проверенных документов с анализом (обязательно).\n- `flows`: Плоский перечень выявленных проблемных моментов с указанием документа (не обязательно).\n- `missing_required`: Перечень отсутствующих обязательных типов документов (не обязательно).\n- `unrouted`: Документы неизвестного типа (не обязательно).\n- `case_summary`: Краткое резюме по делу (не обязательно).\n\nПолитика обработки ошибок:\n- **ERROR**: Если входные данные повреждены или нельзя однозначно установить значение хотя бы одного обязательного поля (`verdict`, `documents`).\n- **PARTIAL**: Если некоторые из обязательных данных отсутствуют (отмечаются значением `null`).\n- **LOW_CONFIDENCE**: Результат имеет низкую уверенность (например, при неоднозначности интерпретации).\n\nПравила бизнеса:\n1. Формулировка итогового решения по пакету документов.\n2. Анализ каждого отдельного документа в комплекте.\n3. Составление плоского списка всех найденных нарушений с привязкой к конкретному документу.\n4. Определение перечня обязательных документов, которые отсутствуют в представленном наборе.\n5. Выявление документов неопределённого типа.\n6. Подготовка сводного заключения по рассматриваемому случаю.\n\nОграничения:\n- Запрещено придумывать информацию, все выводы должны быть основаны исключительно на представленных документах.\n- Значения полей выводятся строго так, как они представлены в документе без изменений.\n\nДопущения:\n(нет)\n\nГлоссарий:\n(пустой)",
+  "prompt_addenda": [],
+  "history": [
+    {
+      "seq": 1,
+      "stage": "draft",
+      "action": "new",
+      "detail": "archetype=document_package"
+    },
+    {
+      "seq": 2,
+      "stage": "intake",
+      "action": "intake",
+      "detail": "цель='Проверка комплекта документов и рисков по кредитной сделке'; неоднозначностей: 0, отсутствующих элементов: 0"
+    },
+    {
+      "seq": 3,
+      "stage": "clarifying",
+      "action": "analyze",
+      "detail": "3 новых замечаний; 10 открытых вопросов"
+    },
+    {
+      "seq": 4,
+      "stage": "clarifying",
+      "action": "routing",
+      "detail": "типов: 3, обязательных: 3"
+    },
+    {
+      "seq": 5,
+      "stage": "contracted",
+      "action": "contract",
+      "detail": "полей: 6, входов: 2"
+    },
+    {
+      "seq": 6,
+      "stage": "built",
+      "action": "synthesize",
+      "detail": "системный промпт (1609 симв.) + файлов комплекта: 7"
+    }
+  ]
+}

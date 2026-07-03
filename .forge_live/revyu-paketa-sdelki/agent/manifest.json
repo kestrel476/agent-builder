@@ -1,0 +1,21 @@
+{
+  "name": "Ревью пакета сделки",
+  "slug": "revyu-paketa-sdelki",
+  "archetype": "document_package",
+  "version": 1,
+  "strategy": "package_review",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "routing",
+    "multi_step",
+    "json_output",
+    "schema_validation",
+    "logging"
+  ],
+  "schema_hash": "6d01bf717a46c361",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 0
+}

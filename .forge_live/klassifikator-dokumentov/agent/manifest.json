@@ -1,0 +1,20 @@
+{
+  "name": "Классификатор документов",
+  "slug": "klassifikator-dokumentov",
+  "archetype": "classification",
+  "version": 1,
+  "strategy": "extract",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "json_output",
+    "confidence",
+    "routing",
+    "logging"
+  ],
+  "schema_hash": "3a139aced82080ad",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 1
+}

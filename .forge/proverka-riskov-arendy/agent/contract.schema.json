@@ -1,0 +1,25 @@
+{
+  "type": "object",
+  "properties": {
+    "findings": {
+      "type": "array",
+      "description": "По одной записи на проверенное условие (имя, наличие, цитата)",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overall_risk": {
+      "type": "string",
+      "description": "Итоговый уровень риска low/medium/high"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Самооценка уверенности от 0 до 1."
+    }
+  },
+  "required": [
+    "findings",
+    "overall_risk"
+  ],
+  "additionalProperties": false
+}

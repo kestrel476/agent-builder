@@ -1,0 +1,22 @@
+{
+  "name": "Детектор очевидных рисков ПРКО",
+  "slug": "detektor-ochevidnyh-riskov-prko",
+  "archetype": "catalog_risk_detection",
+  "version": 1,
+  "strategy": "rag_detect",
+  "capabilities": [
+    "llm",
+    "rag",
+    "doc_extraction",
+    "ocr",
+    "json_output",
+    "schema_validation",
+    "confidence",
+    "multi_step",
+    "logging"
+  ],
+  "schema_hash": "8858c2b8bc140c20",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 0
+}

@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "detected_risks": {
+      "type": "array",
+      "description": "Обнаруженные в документе риски из каталога.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "risk_code": {
+            "type": "string",
+            "description": "Код риска из каталога."
+          },
+          "title": {
+            "type": "string",
+            "description": "Название риска (дословно из каталога)."
+          },
+          "fact": {
+            "type": "string",
+            "description": "Конкретное обстоятельство из документа, порождающее риск."
+          }
+        },
+        "required": [
+          "risk_code",
+          "title",
+          "fact"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Самооценка уверенности от 0 до 1."
+    }
+  },
+  "required": [
+    "detected_risks",
+    "confidence"
+  ],
+  "additionalProperties": false
+}

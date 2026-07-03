@@ -1,0 +1,25 @@
+name: Детектор очевидных рисков ПРКО
+archetype: catalog_risk_detection
+strategy: rag_detect
+input_arity: 1
+confidence_threshold: 0.6
+capabilities:
+- llm
+- rag
+- doc_extraction
+- ocr
+- json_output
+- schema_validation
+- confidence
+- multi_step
+- logging
+settings:
+  output_kind: json
+  knowledge:
+    id_field: __key__
+    title_field: title
+    fact_field: fact
+    filter:
+      risk_level: Очевидный риск
+    top_k: 30
+    file: knowledge/catalog.json

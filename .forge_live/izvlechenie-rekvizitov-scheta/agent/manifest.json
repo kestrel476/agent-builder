@@ -1,0 +1,20 @@
+{
+  "name": "Извлечение реквизитов счёта",
+  "slug": "izvlechenie-rekvizitov-scheta",
+  "archetype": "json_extraction",
+  "version": 1,
+  "strategy": "extract",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "json_output",
+    "schema_validation",
+    "confidence",
+    "logging"
+  ],
+  "schema_hash": "cc58c354b0d75927",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 1
+}

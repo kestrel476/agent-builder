@@ -1,0 +1,14 @@
+{
+  "passed": 1,
+  "total": 1,
+  "results": [
+    {
+      "id": "T-001",
+      "name": "garantiya",
+      "status": "pass",
+      "detail": "прогон=ok; flagged: P=1.00 R=1.00 F1=1.00 (найдено 2/2 ожид., всего 2)",
+      "diffs": [],
+      "run_status": "ok"
+    }
+  ]
+}

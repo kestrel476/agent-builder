@@ -1,0 +1,41 @@
+{
+  "type": "object",
+  "properties": {
+    "supplier_name": {
+      "type": "string",
+      "description": "Наименование поставщика"
+    },
+    "supplier_inn": {
+      "type": "string",
+      "description": "ИНН поставщика"
+    },
+    "invoice_number": {
+      "type": "string",
+      "description": "Номер счёта"
+    },
+    "invoice_date": {
+      "type": "string",
+      "description": "Дата счёта"
+    },
+    "total_amount": {
+      "type": "number",
+      "description": "Итоговая сумма"
+    },
+    "vat_amount": {
+      "type": "number",
+      "description": "Сумма НДС или null, если отсутствует"
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Самооценка уверенности от 0 до 1."
+    }
+  },
+  "required": [
+    "supplier_name",
+    "supplier_inn",
+    "invoice_number",
+    "invoice_date",
+    "total_amount"
+  ],
+  "additionalProperties": false
+}

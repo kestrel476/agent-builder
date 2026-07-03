@@ -1,0 +1,20 @@
+{
+  "name": "Экспертиза банковской гарантии",
+  "slug": "ekspertiza-bankovskoy-garantii",
+  "archetype": "checklist",
+  "version": 1,
+  "strategy": "checklist_review",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "rules",
+    "json_output",
+    "multi_step",
+    "logging"
+  ],
+  "schema_hash": "89298c1c51de23c7",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 1
+}

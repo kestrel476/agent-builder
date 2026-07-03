@@ -1,0 +1,93 @@
+{
+  "type": "object",
+  "properties": {
+    "verdict": {
+      "type": "string",
+      "description": "Итоговый вердикт по пакету.",
+      "enum": [
+        "success",
+        "partial",
+        "rejected"
+      ]
+    },
+    "documents": {
+      "type": "array",
+      "description": "Разбор каждого документа пакета.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "description": "Имя файла."
+          },
+          "doc_type": {
+            "type": "string",
+            "description": "Определённый тип."
+          },
+          "summary": {
+            "type": "string",
+            "description": "Краткое содержание."
+          },
+          "findings": {
+            "type": "array",
+            "description": "Находки/риски.",
+            "items": {
+              "type": "string"
+            }
+          }
+        },
+        "required": [
+          "name",
+          "doc_type"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "flows": {
+      "type": "array",
+      "description": "Плоский список находок с привязкой к документу.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "document": {
+            "type": "string"
+          },
+          "doc_type": {
+            "type": "string"
+          },
+          "finding": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "document",
+          "finding"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "missing_required": {
+      "type": "array",
+      "description": "Обязательные типы документов, которых нет в пакете.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "unrouted": {
+      "type": "array",
+      "description": "Документы нераспознанного типа.",
+      "items": {
+        "type": "string"
+      }
+    },
+    "case_summary": {
+      "type": "string",
+      "description": "Сводное заключение по кейсу."
+    }
+  },
+  "required": [
+    "verdict",
+    "documents"
+  ],
+  "additionalProperties": false
+}

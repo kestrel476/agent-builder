@@ -1,0 +1,14 @@
+{
+  "passed": 1,
+  "total": 1,
+  "results": [
+    {
+      "id": "T-001",
+      "name": "lease-smoke",
+      "status": "pass",
+      "detail": "прогон=partial; дымовой тест ок (без ожиданий)",
+      "diffs": [],
+      "run_status": "partial"
+    }
+  ]
+}

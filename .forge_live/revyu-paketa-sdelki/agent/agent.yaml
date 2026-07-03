@@ -1,0 +1,32 @@
+name: Ревью пакета сделки
+archetype: document_package
+strategy: package_review
+input_arity: 9
+confidence_threshold: 0.0
+capabilities:
+- llm
+- doc_extraction
+- ocr
+- routing
+- multi_step
+- json_output
+- schema_validation
+- logging
+settings:
+  output_kind: report
+  package:
+    taxonomy:
+    - code: ustav
+      title: Устав
+      description: 'учредительный документ общества: уставный капитал, органы управления'
+    - code: prko
+      title: Проект решения о кредитной операции
+      description: 'кредитное решение: заёмщик, обеспечение, условия кредита'
+    - code: doverennost
+      title: Доверенность
+      description: документ о полномочиях представителя
+    required:
+    - ustav
+    - prko
+    - doverennost
+    per_type: {}

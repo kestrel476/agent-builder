@@ -1,0 +1,50 @@
+{
+  "type": "object",
+  "properties": {
+    "findings": {
+      "type": "array",
+      "description": "По одной записи на каждое проверенное условие.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "condition": {
+            "type": "string",
+            "description": "Название проверяемого условия/риска."
+          },
+          "present": {
+            "type": "boolean",
+            "description": "Обнаружено ли условие в документе."
+          },
+          "quote": {
+            "type": "string",
+            "description": "Цитата из документа, подтверждающая вывод."
+          }
+        },
+        "required": [
+          "condition",
+          "present"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "overall_risk": {
+      "type": "string",
+      "description": "Агрегированный уровень риска.",
+      "enum": [
+        "low",
+        "medium",
+        "high"
+      ]
+    },
+    "confidence": {
+      "type": "number",
+      "description": "Самооценка уверенности от 0 до 1."
+    }
+  },
+  "required": [
+    "findings",
+    "overall_risk",
+    "confidence"
+  ],
+  "additionalProperties": false
+}

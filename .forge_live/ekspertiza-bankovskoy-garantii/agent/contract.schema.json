@@ -1,0 +1,63 @@
+{
+  "type": "object",
+  "properties": {
+    "results": {
+      "type": "array",
+      "description": "Результат по каждой проверке чек-листа.",
+      "items": {
+        "type": "object",
+        "properties": {
+          "check_id": {
+            "type": "string",
+            "description": "Код проверки."
+          },
+          "question": {
+            "type": "string",
+            "description": "Вопрос проверки."
+          },
+          "verdict": {
+            "type": "string",
+            "description": "yes / no / n_a."
+          },
+          "position": {
+            "type": "string",
+            "description": "Позиция ЮП."
+          },
+          "finding": {
+            "type": "string",
+            "description": "Описание риска/замечания."
+          },
+          "recommendation": {
+            "type": "string",
+            "description": "Рекомендация."
+          },
+          "evidence": {
+            "type": "string",
+            "description": "Цитата из документа."
+          }
+        },
+        "required": [
+          "check_id",
+          "verdict"
+        ],
+        "additionalProperties": false
+      }
+    },
+    "flagged": {
+      "type": "array",
+      "description": "Коды сработавших проверок (verdict=yes).",
+      "items": {
+        "type": "string"
+      }
+    },
+    "overall_position": {
+      "type": "string",
+      "description": "Итоговая позиция по документу."
+    }
+  },
+  "required": [
+    "results",
+    "overall_position"
+  ],
+  "additionalProperties": false
+}

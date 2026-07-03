@@ -1,0 +1,15 @@
+name: Классификатор документов
+archetype: classification
+strategy: extract
+input_arity: 1
+confidence_threshold: 0.6
+capabilities:
+- llm
+- doc_extraction
+- ocr
+- json_output
+- confidence
+- routing
+- logging
+settings:
+  output_kind: classification

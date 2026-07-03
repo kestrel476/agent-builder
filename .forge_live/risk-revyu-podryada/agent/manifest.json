@@ -1,0 +1,21 @@
+{
+  "name": "Риск-ревью подряда",
+  "slug": "risk-revyu-podryada",
+  "archetype": "risk_check",
+  "version": 1,
+  "strategy": "extract",
+  "capabilities": [
+    "llm",
+    "doc_extraction",
+    "ocr",
+    "rules",
+    "json_output",
+    "confidence",
+    "logging",
+    "multi_step"
+  ],
+  "schema_hash": "d83087b3f2a6195c",
+  "open_issues": 0,
+  "assumptions": 0,
+  "test_cases": 1
+}

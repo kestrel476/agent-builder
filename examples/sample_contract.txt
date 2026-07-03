@@ -1,0 +1,11 @@
+MUTUAL NON-DISCLOSURE AGREEMENT
+
+This Mutual Non-Disclosure Agreement ("Agreement") is made between Northwind
+Traders Inc and Contoso Pharmaceuticals LLC, effective February 14, 2024.
+
+In consideration of the mutual covenants herein, and for a total consideration
+of USD 75,000, the parties agree as follows...
+
+This Agreement shall be governed by the laws of California. Either party may
+terminate upon 30 days written notice. Notices shall be sent to
+legal@contoso.example.
